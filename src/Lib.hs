@@ -13,8 +13,10 @@ data Player = Player1 | Player2
   deriving Show
 -- | The score at any point in the game of Tennis
 data Score = Score
-  deriving Eq
+           | LoveAll
+  deriving (Eq, Show)
 
 score :: [Player] -- ^ The players winning a ball
       -> Score    -- ^ The score after all the wins
+score [] = LoveAll
 score _ = Score

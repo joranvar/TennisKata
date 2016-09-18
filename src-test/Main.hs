@@ -23,11 +23,11 @@ tests =
 scTests :: [TestTree]
 scTests =
   [ testProperty "Any game can be scored" $
-    \wins -> score wins == Score
+    \wins -> score wins `elem` [Score, LoveAll]
   ]
 
 huTests :: [TestTree]
 huTests =
-  [ testCase "True is True" $
-    True @?= True
+  [ testCase "It starts with nothing" $
+    score [] @?= LoveAll
   ]

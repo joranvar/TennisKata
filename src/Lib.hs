@@ -9,7 +9,7 @@ module Lib
   ) where
 
 -- | A player in the game of Tennis
-data Player = Player
+data Player = Player1 | Player2
   deriving Show
 -- | The score at any point in the game of Tennis
 data Score = Score

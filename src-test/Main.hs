@@ -9,7 +9,7 @@ import Test.SmallCheck.Series
 
 import Lib (score, Player(..), Score(..))
 instance (Monad m) => Serial m Player where
-  series = generate (\d -> take d [Player])
+  series = generate (\d -> take d [Player1, Player2])
 
 main :: IO ()
 main = defaultMain $ testGroup "all-tests" tests

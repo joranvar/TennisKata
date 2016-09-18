@@ -24,6 +24,8 @@ scTests :: [TestTree]
 scTests =
   [ testProperty "Any game can be scored" $
     \wins -> score wins `elem` [Score, LoveAll]
+  , testProperty "A game with three balls is not won" $
+    \(win0, win1, win2) -> score [win0, win1, win2] `notElem` [Winner Player1, Winner Player2]
   ]
 
 huTests :: [TestTree]

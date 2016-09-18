@@ -10,10 +10,11 @@ module Lib
 
 -- | A player in the game of Tennis
 data Player = Player1 | Player2
-  deriving Show
+  deriving (Eq, Show)
 -- | The score at any point in the game of Tennis
 data Score = Score
            | LoveAll
+           | Winner Player
   deriving (Eq, Show)
 
 score :: [Player] -- ^ The players winning a ball

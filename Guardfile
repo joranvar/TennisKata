@@ -7,13 +7,14 @@ def execute(cmd)
   end
 end
 
-def run_all_tests
+def run_all_tests m
+  print m
   execute %{
     stack test
   }
 end
 
 guard :shell do
-  watch(%r{.*\.cabal$})          { run_all_tests }
-  watch(%r{.*\.hs$})             { run_all_tests }
+  watch(%r{^[^#]*\.cabal$})          { |m| run_all_tests m[0] }
+  watch(%r{^[^#]*\.hs$})             { |m| run_all_tests m[0] }
 end

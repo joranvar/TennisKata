@@ -7,6 +7,7 @@ module Lib
   , Point(..)
     -- * Exported functions
   , score
+  , otherPlayer
   ) where
 
 -- | The state of the game of Tennis
@@ -27,3 +28,8 @@ score p (Advantage a)
   | p == a = Winner a
 score Player1 _ = Points Fifteen Love
 score Player2 _ = Points Love Fifteen
+
+-- | The other player
+otherPlayer :: Player -> Player
+otherPlayer Player1 = Player2
+otherPlayer Player2 = Player1

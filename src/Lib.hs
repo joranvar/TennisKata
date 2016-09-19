@@ -10,7 +10,7 @@ module Lib
   ) where
 
 -- | The state of the game of Tennis
-data Score = LoveAll | Points Point Point | Advantage | Deuce | Winner Player
+data Score = LoveAll | Points Point Point | Advantage Player | Deuce | Winner Player
   deriving (Eq, Show)
 -- | The point score
 data Point = Love | Fifteen | Thirty | Forty

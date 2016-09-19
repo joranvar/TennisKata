@@ -26,6 +26,8 @@ scTests =
     \ball -> score ball LoveAll /= LoveAll
   , testProperty "One ball after love-all has a fifteen" $
     \ball -> score ball LoveAll `elem` [Points Fifteen Love, Points Love Fifteen]
+  , testProperty "Advantaged player wins ball -> wins game" $
+    \ball -> score ball (Advantage ball) == Winner ball
   ]
 
 huTests :: [TestTree]

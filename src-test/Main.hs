@@ -36,4 +36,6 @@ huTests :: [TestTree]
 huTests =
   [ testCase "Player two win after love-all -> Love Fifteen" $
     score Player2 LoveAll @?= Points Love Fifteen
+  , testProperty "Player one has forty and wins ball -> wins game" $
+    score Player1 (Points Forty Love) == Winner Player1
   ]

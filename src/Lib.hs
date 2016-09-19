@@ -26,6 +26,7 @@ score :: Player -- ^ The winner of the ball
       -> Score -- ^ The new score
 score p (Advantage a)
   | p == a = Winner a
+  | otherwise = Deuce
 score Player1 _ = Points Fifteen Love
 score Player2 _ = Points Love Fifteen
 

@@ -23,4 +23,5 @@ data Player = Player1 | Player2
 score :: Player -- ^ The winner of the ball
       -> Score -- ^ The previous score
       -> Score -- ^ The new score
-score _ _ = Points Fifteen Love
+score Player1 _ = Points Fifteen Love
+score Player2 _ = Points Love Fifteen

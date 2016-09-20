@@ -30,5 +30,6 @@ score :: [Player] -- ^ The players that won balls
 score [] = Points Love Love
 score [Player1] = Points Fifteen Love
 score [Player1, Player1] = Points Thirty Love
+score bs | all (== Player1) bs = Winner Player1
 score bs | length bs > 5 = Deuce
 score _ = Points Love Fifteen

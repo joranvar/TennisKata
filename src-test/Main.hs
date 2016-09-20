@@ -24,6 +24,8 @@ scTests :: [TestTree]
 scTests =
   [ testProperty "Scoring at least one ball: no longer Love all" $
     \ball balls -> score (ball:balls) /= Points Love Love
+  , testProperty "Scoring at least six balls: deuce, advantage or winner" $
+    \b0 b1 b2 b3 b4 b5 balls -> score (b0:b1:b2:b3:b4:b5:balls) `elem` [Deuce, Advantage Player1, Advantage Player2, Winner Player1, Winner Player2]
   ]
 
 huTests :: [TestTree]

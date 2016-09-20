@@ -28,5 +28,6 @@ data Score = Winner Player
 score :: [Player] -- ^ The players that won balls
       -> Score    -- ^ The score after that
 score [] = Points Love Love
+score [Player1] = Points Fifteen Love
 score bs | length bs > 5 = Deuce
 score _ = Points Love Fifteen

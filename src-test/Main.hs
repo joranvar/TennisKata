@@ -34,4 +34,6 @@ huTests =
     score [] @?= Points Love Love
   , testCase "Scoring one ball p1: fifteen - love" $
     score [Player1] @?= Points Fifteen Love
+  , testCase "Scoring one ball p2: love - fifteen" $
+    score [Player2] @?= Points Love Fifteen
   ]

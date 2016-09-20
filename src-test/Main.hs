@@ -26,7 +26,14 @@ scTests =
     \ball balls -> score (ball:balls) /= Points Love Love
   , testProperty "Scoring at least six balls: deuce, advantage or winner" $
     \b0 b1 b2 b3 b4 b5 balls -> score (b0:b1:b2:b3:b4:b5:balls) `elem` [Deuce, Advantage Player1, Advantage Player2, Winner Player1, Winner Player2]
+  , testProperty "Only Player1 scores: x - Love, Deuce, Advantage P1 or winner P1" $
+    \x -> noP2 $ score (replicate x Player1)
   ]
+  where noP2 (Points _ Love) = True
+        noP2 (Deuce) = True
+        noP2 (Advantage Player1) = True
+        noP2 (Winner Player1) = True
+        noP2 _ = False
 
 huTests :: [TestTree]
 huTests =

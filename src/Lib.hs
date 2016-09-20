@@ -27,4 +27,5 @@ data Score = Winner Player
 
 score :: [Player] -- ^ The players that won balls
       -> Score    -- ^ The score after that
-score _ = Points Love Love
+score [] = Points Love Love
+score _ = Points Love Fifteen

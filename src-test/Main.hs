@@ -24,6 +24,11 @@ scTests :: [TestTree]
 scTests =
   [ testProperty "After one ball, score is Fifteen-Love or Love-Fifteen" $
     \ball -> score newGame ball `elem` [Points Fifteen Love, Points Love Fifteen]
+  , testProperty "When Forty-<anything but forty> and ball for player 1, score is Game for player 1" $
+    \points ->
+      case points of
+        Forty -> True
+        _ -> score (Points Forty points) Player1 == Game Player1
   ]
 
 huTests :: [TestTree]

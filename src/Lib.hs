@@ -17,7 +17,7 @@ data Player = Player1 | Player2
 
 -- | The point system
 data Point = Love | Fifteen | Thirty | Forty
-  deriving (Eq, Show)
+  deriving (Eq, Show, Enum, Bounded)
 
 -- | The current score
 data Score = Game Player
@@ -34,6 +34,6 @@ newGame = Points Love Love
 score :: Score -- ^ The previous score
       -> Player -- ^ The ball-winning player
       -> Score -- ^ The score after this ball
-score (Points Forty Thirty) Player1 = Game Player1
+score (Points Forty _) Player1 = Game Player1
 score _ Player1 = Points Fifteen Love
 score _ Player2 = Points Love Fifteen

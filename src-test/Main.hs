@@ -7,7 +7,7 @@ import Test.Tasty.HUnit
 import Test.Tasty.SmallCheck
 --import Test.SmallCheck.Series
 
-import Lib ( )
+import Lib
 -- instance (Monad m) => Serial m T where
 --   series = generate (\d -> take d [ ])
 
@@ -28,6 +28,6 @@ scTests =
 
 huTests :: [TestTree]
 huTests =
-  [ testCase "True is True" $
-    True @?= True
+  [ testCase "An empty game is Love-all" $
+    newGame @?= Points Love Love
   ]

@@ -5,6 +5,8 @@ module Lib
     Score(..)
   , Point(..)
   , Player(..)
+    -- * Utility functions
+  , newGame
   ) where
 
 -- | The players
@@ -21,3 +23,7 @@ data Score = Game Player
            | Deuce
            | Points Point Point
   deriving (Eq, Show)
+
+-- | Get the initial score for a normal game of tennis
+newGame :: Score
+newGame = Points Love Love

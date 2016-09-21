@@ -32,4 +32,6 @@ huTests =
     newGame @?= Points Love Love
   , testCase "After one ball for player 1, score is Fifteen-Love" $
     score newGame Player1 @?= Points Fifteen Love
+  , testCase "After one ball for player 2, score is Love-Fifteen" $
+    score newGame Player2 @?= Points Love Fifteen
   ]

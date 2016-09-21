@@ -29,6 +29,11 @@ scTests =
       case points of
         Forty -> True
         _ -> score (Points Forty points) Player1 == Game Player1
+  , testProperty "When <anything but forty>-Forty and ball for player 2, score is Game for player 2" $
+    \points ->
+      case points of
+        Forty -> True
+        _ -> score (Points points Forty) Player2 == Game Player2
   ]
 
 huTests :: [TestTree]

@@ -35,5 +35,6 @@ score :: Score -- ^ The previous score
       -> Player -- ^ The ball-winning player
       -> Score -- ^ The score after this ball
 score (Points Forty _) Player1 = Game Player1
+score (Points _ Forty) Player2 = Game Player2
 score _ Player1 = Points Fifteen Love
 score _ Player2 = Points Love Fifteen

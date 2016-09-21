@@ -34,4 +34,4 @@ newGame = Points Love Love
 score :: Score -- ^ The previous score
       -> Player -- ^ The ball-winning player
       -> Score -- ^ The score after this ball
-score _ _ = Points Love Love
+score _ _ = Points Love Fifteen

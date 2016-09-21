@@ -7,11 +7,13 @@ module Lib
   , Player(..)
     -- * Utility functions
   , newGame
+   -- * Scoring the game
+  , score
   ) where
 
 -- | The players
 data Player = Player1 | Player2
-  deriving (Eq, Show)
+  deriving (Eq, Show, Enum, Bounded)
 
 -- | The point system
 data Point = Love | Fifteen | Thirty | Forty
@@ -27,3 +29,9 @@ data Score = Game Player
 -- | Get the initial score for a normal game of tennis
 newGame :: Score
 newGame = Points Love Love
+
+-- | Score a ball
+score :: Score -- ^ The previous score
+      -> Player -- ^ The ball-winning player
+      -> Score -- ^ The score after this ball
+score _ _ = Points Love Love

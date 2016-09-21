@@ -30,4 +30,6 @@ huTests :: [TestTree]
 huTests =
   [ testCase "An empty game is Love-all" $
     newGame @?= Points Love Love
+  , testCase "After one ball for player 1, score is Fifteen-Love" $
+    score newGame Player1 @?= Points Fifteen Love
   ]

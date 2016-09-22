@@ -28,4 +28,5 @@ data Score = Game Player
 score :: Player -- ^ The winner
       -> Score -- ^ The score
       -> Score -- ^ The new score
+score p Deuce = Advantage p
 score p _ = Game p

@@ -5,11 +5,11 @@
 import Test.Tasty
 import Test.Tasty.HUnit
 import Test.Tasty.SmallCheck
---import Test.SmallCheck.Series
+import Test.SmallCheck.Series
 
-import Lib ( )
--- instance (Monad m) => Serial m T where
---   series = generate (\d -> take d [ ])
+import Lib
+instance (Monad m, Bounded a, Enum a) => Serial m a where
+  series = generate (\d -> take d [minBound .. maxBound])
 
 main :: IO ()
 main = defaultMain $ testGroup "all-tests" tests
@@ -22,8 +22,10 @@ tests =
 
 scTests :: [TestTree]
 scTests =
-  [ testProperty "id x == x" $
-    \x -> id (x::Int) == x
+  [ testProperty "Player1 has Forty and wins the ball -> Game Player1" $
+    \p -> score Player1 (Points Forty p) == Game Player1
+  , testProperty "Player2 has Forty and wins the ball -> Game Player2" $
+    \p -> score Player2 (Points p Forty) == Game Player2
   ]
 
 huTests :: [TestTree]

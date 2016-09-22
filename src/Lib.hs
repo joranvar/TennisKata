@@ -5,6 +5,8 @@ module Lib
     Player(..)
   , Point(..)
   , Score(..)
+    -- * Functions
+  , score
   ) where
 
 -- | The players
@@ -21,3 +23,9 @@ data Score = Game Player
            | Deuce
            | Points Point Point
   deriving (Show, Eq)
+
+-- | Calculating the next score
+score :: Player -- ^ The winner
+      -> Score -- ^ The score
+      -> Score -- ^ The new score
+score p _ = Game p

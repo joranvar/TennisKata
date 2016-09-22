@@ -1,5 +1,23 @@
 -- | TennisKata - http://www.codingdojo.org/cgi-bin/index.pl?KataTennis
 module Lib
   (
-    -- * Exported functions
+    -- * Domain types
+    Player(..)
+  , Point(..)
+  , Score(..)
   ) where
+
+-- | The players
+data Player = Player1 | Player2
+  deriving (Show, Eq, Enum, Bounded)
+
+-- | The points
+data Point = Love | Fifteen | Thirty | Forty
+  deriving (Show, Eq, Enum, Bounded)
+
+-- | The score
+data Score = Game Player
+           | Advantage Player
+           | Deuce
+           | Points Point Point
+  deriving (Show, Eq)

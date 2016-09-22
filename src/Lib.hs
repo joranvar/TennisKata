@@ -34,6 +34,8 @@ score p (Advantage o)
   | p /= o = Deuce
 score Player1 (Points Forty _) = Game Player1
 score Player1 (Points p q) = Points (succ p) q
+score Player2 (Points _ Forty) = Game Player2
+score Player2 (Points p q) = Points p (succ q)
 score p _ = Game p
 
 -- | The other player

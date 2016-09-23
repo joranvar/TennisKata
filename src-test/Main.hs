@@ -26,6 +26,10 @@ scTests =
     \p q -> p /= Forty ==> score Player1 (Points p q) == Points (succ p) q
   , testProperty "Player2 scores and does not have 40 -> Player2 gets higher score" $
     \p q -> q /= Forty ==> score Player2 (Points p q) == Points p (succ q)
+  , testProperty "Player1 scores and does have 40 -> Player1 wins" $
+    \p -> score Player1 (Points Forty p) == Game Player1
+  , testProperty "Player2 scores and does have 40 -> Player2 wins" $
+    \p -> score Player2 (Points p Forty) == Game Player2
   ]
 
 huTests :: [TestTree]

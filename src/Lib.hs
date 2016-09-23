@@ -28,8 +28,10 @@ data Player = Player1 | Player2
 score :: Player -- ^ The scoring player
       -> Score -- ^ The previous score
       -> Score -- ^ The resulting score
+score Player1 (Points Thirty Forty) = Deuce
 score Player1 (Points Forty _) = Game Player1
 score Player1 (Points p q) = Points (succ p) q
+score Player2 (Points Forty Thirty) = Deuce
 score Player2 (Points _ Forty) = Game Player2
 score Player2 (Points p q) = Points p (succ q)
 score _ (Advantage _) = Deuce

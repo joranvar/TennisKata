@@ -5,6 +5,8 @@ module Lib
     Score(..)
   , Point(..)
   , Player(..)
+    -- * The functions
+  , score
   ) where
 
 -- | The score of a game of tennis
@@ -21,3 +23,12 @@ data Point = Love | Fifteen | Thirty | Forty
 -- | The players
 data Player = Player1 | Player2
   deriving (Eq, Show, Enum, Bounded)
+
+-- | Get the next score after a ball
+score :: Player -- ^ The scoring player
+      -> Score -- ^ The previous score
+      -> Score -- ^ The resulting score
+score _ (Points p q) = Points (succ p) q
+score _ (Advantage _) = Deuce
+score _ Deuce = Deuce
+score _ (Game _) = Deuce

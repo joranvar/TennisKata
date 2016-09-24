@@ -22,8 +22,10 @@ tests =
 
 scTests :: [TestTree]
 scTests =
-  [ testProperty "Scoring when both players are < 40 adds points a player's score" $
-    \player p q -> p /= Forty && q /= Forty ==> score player (Points p q) `elem` [Points (succ p) q, Points p (succ q)]
+  [ testProperty "Scoring when both players are < 40 adds points to the winner's score" $
+    \player p q -> p /= Forty && q /= Forty ==> score player (Points p q) == case player of
+      Player1 -> Points (succ p) q
+      Player2 -> Points p (succ q)
   ]
 
 huTests :: [TestTree]

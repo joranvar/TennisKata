@@ -34,6 +34,8 @@ scTests =
 
 huTests :: [TestTree]
 huTests =
-  [ testCase "True is True" $
-    True @?= True
+  [ testCase "Scoring when player has thirty and other player has forty -> deuce" $
+    score Player1 (Points Thirty Forty) @?= Deuce
+  , testCase "Scoring when player has thirty and other player has forty -> deuce" $
+    score Player2 (Points Forty Thirty) @?= Deuce
   ]

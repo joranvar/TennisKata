@@ -7,6 +7,7 @@ module Lib
   , Player(..)
     -- * The functions
   , score
+  , other
   ) where
 
 -- | The game score
@@ -35,4 +36,10 @@ score Player2 (Points Forty Thirty) = Deuce
 score Player1 (Points p q) = Points (succ p) q
 score Player2 (Points p q) = Points p (succ q)
 score player Deuce = Advantage player
+score player (Advantage o) | other o == player = Deuce
 score p _ = Game p
+
+-- | The other player
+other :: Player -> Player
+other Player1 = Player2
+other Player2 = Player1

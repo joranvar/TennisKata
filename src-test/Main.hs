@@ -34,6 +34,8 @@ scTests =
     \p -> score p Deuce == Advantage p
   , testProperty "Scoring when advantage -> winner" $
     \p -> score p (Advantage p) == Game p
+  , testProperty "Scoring when other has advantage -> deuce" $
+    \p -> score p (Advantage $ other p) == Deuce
   ]
 
 huTests :: [TestTree]

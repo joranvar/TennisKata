@@ -26,6 +26,10 @@ scTests =
     \player p q -> p /= Forty && q /= Forty ==> score player (Points p q) == case player of
       Player1 -> Points (succ p) q
       Player2 -> Points p (succ q)
+  , testProperty "Scoring when player has forty -> player wins the game" $
+    \p -> and [ score Player1 (Points Forty p) == Game Player1
+             , score Player2 (Points p Forty) == Game Player2
+             ]
   ]
 
 huTests :: [TestTree]

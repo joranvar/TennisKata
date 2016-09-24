@@ -28,6 +28,8 @@ data Point = Love | Fifteen | Thirty | Forty
 score :: Player -- ^ The winner
       -> Score  -- ^ The previous score
       -> Score  -- ^ The new score
+score Player1 (Points Forty _) = Game Player1
+score Player2 (Points _ Forty) = Game Player2
 score Player1 (Points p q) = Points (succ p) q
 score Player2 (Points p q) = Points p (succ q)
 score _ _ = Deuce

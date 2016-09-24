@@ -35,4 +35,4 @@ score Player2 (Points Forty Thirty) = Deuce
 score Player1 (Points p q) = Points (succ p) q
 score Player2 (Points p q) = Points p (succ q)
 score player Deuce = Advantage player
-score _ _ = Deuce
+score p _ = Game p

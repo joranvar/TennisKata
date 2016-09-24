@@ -5,6 +5,8 @@ module Lib
     Score(..)
   , Point(..)
   , Player(..)
+    -- * The functions
+  , score
   ) where
 
 -- | The game score
@@ -21,3 +23,10 @@ data Player = Player1 | Player2
 -- | The points
 data Point = Love | Fifteen | Thirty | Forty
   deriving (Eq, Show, Enum, Bounded)
+
+-- | Advance the score
+score :: Player -- ^ The winner
+      -> Score  -- ^ The previous score
+      -> Score  -- ^ The new score
+score _ (Points p q) = Points (succ p) q
+score _ _ = Deuce

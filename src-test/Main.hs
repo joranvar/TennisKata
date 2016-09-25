@@ -22,10 +22,10 @@ tests =
 
 scTests :: [TestTree]
 scTests =
-  [ testProperty "If you have 40 and you win the ball you win the game - p1" $
-    \p1 -> score Player2 (Game { player1 = p1, player2 = Forty}) == Winner Player2
-  , testProperty "If you have 40 and you win the ball you win the game - p2" $
-    \p2 -> score Player1 (Game { player2 = p2, player1 = Forty}) == Winner Player1
+  [ testProperty "If you have 40 and you win the ball (except for deuce) you win the game - p1" $
+    \p1 -> p1 /= Forty ==> score Player2 (Game { player1 = p1, player2 = Forty}) == Winner Player2
+  , testProperty "If you have 40 and you win the ball (except for deuce) you win the game - p2" $
+    \p2 -> p2 /= Forty ==> score Player1 (Game { player2 = p2, player1 = Forty}) == Winner Player1
   , testProperty "Win a ball if you don't have 40, you will advance a point - p1" $
     \p1 p2 -> p1 /= Forty ==> score Player1 (Game { player1 = p1, player2 = p2}) == Game { player1 = succ p1, player2 = p2 }
   , testProperty "Win a ball if you don't have 40, you will advance a point - p2" $

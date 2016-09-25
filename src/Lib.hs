@@ -5,6 +5,8 @@ module Lib
     Player (..)
   , Points (..)
   , Game (..)
+    -- * The scoring function
+  , score
   ) where
 
 -- | Each player
@@ -18,3 +20,11 @@ data Points = Love | Fifteen | Thirty | Forty
 -- | in one game
 data Game = Game { player1 :: Points
                  , player2 :: Points }
+          | Winner Player
+  deriving (Eq, Show)
+
+-- | Calculate what happens if a player scores
+score :: Player -- ^ The scoring player
+      -> Game   -- ^ The previous score
+      -> Game   -- ^ The new score
+score p _ = Winner p

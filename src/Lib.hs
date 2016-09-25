@@ -21,6 +21,7 @@ data Points = Love | Fifteen | Thirty | Forty
 data Game = Game { player1 :: Points
                  , player2 :: Points }
           | Winner Player
+          | Advantage Player
   deriving (Eq, Show)
 
 -- | Calculate what happens if a player scores
@@ -31,4 +32,5 @@ score Player1 (Game p1 p2)
   | p1 /= Forty = Game (succ p1) p2
 score Player2 (Game p1 p2)
   | p2 /= Forty = Game p1 (succ p2)
+score p (Game Forty Forty) = Advantage p
 score p _ = Winner p

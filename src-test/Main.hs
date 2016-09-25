@@ -30,6 +30,8 @@ scTests =
     \p1 p2 -> p1 /= Forty ==> score Player1 (Game { player1 = p1, player2 = p2}) == Game { player1 = succ p1, player2 = p2 }
   , testProperty "Win a ball if you don't have 40, you will advance a point - p2" $
     \p1 p2 -> p2 /= Forty ==> score Player2 (Game { player1 = p1, player2 = p2}) == Game { player1 = p1, player2 = succ p2 }
+  , testProperty "Win a ball if the score is deuce, get advantage" $
+    \p -> score p (Game { player1 = Forty, player2 = Forty }) == Advantage p
   ]
 
 huTests :: [TestTree]

@@ -27,4 +27,8 @@ data Game = Game { player1 :: Points
 score :: Player -- ^ The scoring player
       -> Game   -- ^ The previous score
       -> Game   -- ^ The new score
+score Player1 (Game p1 p2)
+  | p1 /= Forty = Game (succ p1) p2
+score Player2 (Game p1 p2)
+  | p2 /= Forty = Game p1 (succ p2)
 score p _ = Winner p

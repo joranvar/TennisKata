@@ -38,6 +38,8 @@ scTests =
     \p1 p2 -> p1 /= Forty && p2 /= Forty ==> score Player2 (Points p1 p2) == Points p1 (succ p2)
   , testProperty "When game decided, scoring does not change that" $
     \p1 p2 -> score p1 (Game p2) == Game p2
+  , testProperty "When any wins, scoring is no longer Love-all" $
+    \p ps -> foldl (flip score) (Points Love Love) (p:ps) /= Points Love Love
   ]
 
 huTests :: [TestTree]

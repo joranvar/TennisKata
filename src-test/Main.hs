@@ -32,6 +32,8 @@ scTests =
     \p -> score p (Advantage p) == Game p
   , testProperty "When advantage and other player scores -> deuce" $
     \p -> score p (Advantage (other p)) == Points Forty Forty
+  , testProperty "When player scores and none has forty, they advance points (p1)" $
+    \p1 p2 -> p1 /= Forty && p2 /= Forty ==> score Player1 (Points p1 p2) == Points (succ p1) p2
   ]
 
 huTests :: [TestTree]

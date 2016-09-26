@@ -22,10 +22,12 @@ tests =
 
 scTests :: [TestTree]
 scTests =
-  [ testProperty "Player with 40 points who scores, wins (p1)" $
-    \p -> score Player1 (Points Forty p) == Game Player1
+  [ testProperty "Player with 40 points who scores, wins (unless deuce) (p1)" $
+    \p -> p /= Forty ==> score Player1 (Points Forty p) == Game Player1
   , testProperty "Player with 40 points who scores, wins (p2)" $
-    \p -> score Player2 (Points p Forty) == Game Player2
+    \p -> p /= Forty ==> score Player2 (Points p Forty) == Game Player2
+  , testProperty "When deuce, player who scores, gets advantage" $
+    \p -> score p (Points Forty Forty) == Advantage p
   ]
 
 huTests :: [TestTree]

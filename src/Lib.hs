@@ -11,18 +11,20 @@ module Lib
 
 -- | The players
 data Player = Player1 | Player2
-  deriving Eq
+  deriving (Eq, Show, Enum, Bounded)
 
 -- | Point
 data Point = Love | Fifteen | Thirty | Forty
-  deriving (Eq, Show)
+  deriving (Eq, Show, Enum, Bounded)
 
 -- | The score in a game of tennis
 data Score = Points Point Point
+           | Game Player
   deriving (Eq, Show)
 
 -- | Advancing the score if a player wins a ball
 score :: Player -- ^ The winnig player
       -> Score -- ^ The previous score
       -> Score -- ^ The resulting score
+score Player1 (Points Forty _) = Game Player1
 score _ _ = Points Fifteen Love

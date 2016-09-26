@@ -22,8 +22,8 @@ tests =
 
 scTests :: [TestTree]
 scTests =
-  [ testProperty "id x == x" $
-    \x -> id (x::Int) == x
+  [ testProperty "Player with 40 points who scores, wins" $
+    \p -> score Player1 (Points Forty p) == Game Player1
   ]
 
 huTests :: [TestTree]

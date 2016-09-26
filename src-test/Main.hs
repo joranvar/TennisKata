@@ -36,6 +36,8 @@ scTests =
     \p1 p2 -> p1 /= Forty && p2 /= Forty ==> score Player1 (Points p1 p2) == Points (succ p1) p2
   , testProperty "When player scores and none has forty, they advance points (p2)" $
     \p1 p2 -> p1 /= Forty && p2 /= Forty ==> score Player2 (Points p1 p2) == Points p1 (succ p2)
+  , testProperty "When game decided, scoring does not change that" $
+    \p1 p2 -> score p1 (Game p2) == Game p2
   ]
 
 huTests :: [TestTree]

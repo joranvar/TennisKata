@@ -37,7 +37,7 @@ score Player1 (Points Forty _)     = Game Player1
 score Player2 (Points _ Forty)     = Game Player2
 score Player1 (Points p1 p2)       = Points (succ p1) p2
 score Player2 (Points p1 p2)       = Points p1 (succ p2)
-score _       _                    = Points Fifteen Love
+score _       (Game p)             = Game p
 
 -- | The other player
 other :: Player -> Player

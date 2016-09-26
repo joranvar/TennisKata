@@ -28,6 +28,8 @@ scTests =
     \p -> p /= Forty ==> score Player2 (Points p Forty) == Game Player2
   , testProperty "When deuce, player who scores, gets advantage" $
     \p -> score p (Points Forty Forty) == Advantage p
+  , testProperty "When advantage and advantaged player scores, wins" $
+    \p -> score p (Advantage p) == Game p
   ]
 
 huTests :: [TestTree]

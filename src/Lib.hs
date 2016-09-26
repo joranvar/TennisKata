@@ -27,6 +27,8 @@ data Score = Points Point Point
 score :: Player -- ^ The winnig player
       -> Score -- ^ The previous score
       -> Score -- ^ The resulting score
+score p       (Advantage a)
+  | a == p                         = Game p
 score p       (Points Forty Forty) = Advantage p
 score Player1 (Points Forty _)     = Game Player1
 score Player2 (Points _ Forty)     = Game Player2

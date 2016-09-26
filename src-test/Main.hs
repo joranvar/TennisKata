@@ -22,8 +22,10 @@ tests =
 
 scTests :: [TestTree]
 scTests =
-  [ testProperty "Player with 40 points who scores, wins" $
+  [ testProperty "Player with 40 points who scores, wins (p1)" $
     \p -> score Player1 (Points Forty p) == Game Player1
+  , testProperty "Player with 40 points who scores, wins (p2)" $
+    \p -> score Player2 (Points p Forty) == Game Player2
   ]
 
 huTests :: [TestTree]

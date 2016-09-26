@@ -27,4 +27,5 @@ score :: Player -- ^ The winnig player
       -> Score -- ^ The previous score
       -> Score -- ^ The resulting score
 score Player1 (Points Forty _) = Game Player1
+score Player2 (Points _ Forty) = Game Player2
 score _ _ = Points Fifteen Love

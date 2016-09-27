@@ -36,6 +36,8 @@ scTests =
     \p1 p2 -> Forty `notElem` [p1,p2] ==> score Player1 (Score p1 p2) == Score (succ p1) p2
   , testProperty "Any other score -> player advances (p2)" $
     \p1 p2 -> Forty `notElem` [p1,p2] ==> score Player2 (Score p1 p2) == Score p1 (succ p2)
+  , testProperty "Winner already -> does not change" $
+    \player winner -> score player (Game winner) == Game winner
   ]
 
 huTests :: [TestTree]

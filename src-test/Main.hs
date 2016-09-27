@@ -26,6 +26,8 @@ scTests =
     \otherScore -> otherScore /= Forty ==> score Player1 (Score Forty otherScore) == Game Player1
   , testProperty "Player with Forty scores -> wins (p2)" $
     \otherScore -> otherScore /= Forty ==> score Player2 (Score otherScore Forty) == Game Player2
+  , testProperty "Both Forty, player scores -> advantage for player" $
+    \player -> score player (Score Forty Forty) == Advantage player
   ]
 
 huTests :: [TestTree]

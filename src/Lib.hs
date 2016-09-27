@@ -3,7 +3,8 @@ module Lib
   (
     -- * Domain types
     Score (..)
+  , Points (..)
   ) where
 
-data Score = Love | Fifteen | Thirty | Forty
-
+data Score = Score Points Points
+data Points = Love | Fifteen | Thirty | Forty

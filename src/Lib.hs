@@ -18,4 +18,4 @@ data Player = Player1 | Player2
   deriving (Eq)
 
 score :: Player -> Score -> Score
-score _ _ = Game Player1
+score p _ = Game p

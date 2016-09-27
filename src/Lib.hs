@@ -24,10 +24,12 @@ score :: Player -> Score -> Score
 score p (Score Forty Forty) = Advantage p
 score p (Advantage o)
   | o /= p = Score Forty Forty
-score Player1 (Score Forty _) = Game Player1
-score Player1 (Score p q) = Score (succ p) q
-score Player2 (Score _ Forty) = Game Player2
-score Player2 (Score p q) = Score p (succ q)
+score Player1 (Score p q)
+  | p == Forty = Game Player1
+  | otherwise = Score (succ p) q
+score Player2 (Score p q)
+  | q == Forty = Game Player2
+  | otherwise = Score p (succ q)
 score _ (Game p) = Game p
 score p _ = Game p
 

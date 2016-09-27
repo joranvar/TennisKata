@@ -22,10 +22,10 @@ tests =
 
 scTests :: [TestTree]
 scTests =
-  [ testProperty "Player with Forty scores -> wins (p1)" $
-    \otherScore -> score Player1 (Score Forty otherScore) == Game Player1
+  [ testProperty "Player with Forty scores / other is not Forty -> wins (p1)" $
+    \otherScore -> otherScore /= Forty ==> score Player1 (Score Forty otherScore) == Game Player1
   , testProperty "Player with Forty scores -> wins (p2)" $
-    \otherScore -> score Player2 (Score otherScore Forty) == Game Player2
+    \otherScore -> otherScore /= Forty ==> score Player2 (Score otherScore Forty) == Game Player2
   ]
 
 huTests :: [TestTree]

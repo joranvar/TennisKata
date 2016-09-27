@@ -7,6 +7,8 @@ module Lib
   , Player (..)
     -- * Function
   , score
+    -- * Util function
+  , other
   ) where
 
 data Score = Score Points Points
@@ -20,4 +22,10 @@ data Player = Player1 | Player2
 
 score :: Player -> Score -> Score
 score p (Score Forty Forty) = Advantage p
+score p (Advantage o)
+  | o /= p = Score Forty Forty
 score p _ = Game p
+
+other :: Player -> Player
+other Player1 = Player2
+other Player2 = Player1

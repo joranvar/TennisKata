@@ -30,6 +30,8 @@ scTests =
     \player -> score player (Score Forty Forty) == Advantage player
   , testProperty "If advantaged player wins -> Game for that player" $
     \player -> score player (Advantage player) == Game player
+  , testProperty "If non-advantaged player wins -> Deuce" $
+    \player -> score player (Advantage $ other player) == Score Forty Forty
   ]
 
 huTests :: [TestTree]

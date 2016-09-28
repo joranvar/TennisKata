@@ -11,6 +11,7 @@ module Lib
 
    -- * Util function
   , pointsFor
+  , other
   ) where
 
 data Score = Score Point Point
@@ -28,6 +29,10 @@ pointsFor :: Player -> Point -> Point -> Score
 pointsFor Player1 p1 p2 = Score p1 p2
 pointsFor Player2 p2 p1 = Score p1 p2
 
+other :: Player -> Player
+other Player1 = Player2
+other Player2 = Player1
+
 score :: Player -> Score -> Score
 score Player1 (Score p1 p2)
   | p2 == Forty && p1 == Forty = Advantage Player1
@@ -40,4 +45,4 @@ score Player2 (Score p1 p2)
 score _ (Game p) = Game p
 score p (Advantage o)
   | p == o = Game p
-  | otherwise = Advantage p
+  | otherwise = Score Forty Forty

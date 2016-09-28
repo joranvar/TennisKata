@@ -38,4 +38,6 @@ score Player2 (Score p1 p2)
   | p2 == Forty = Game Player2
   | otherwise = Score p1 (succ p2)
 score _ (Game p) = Game p
-score _ (Advantage p) = Advantage p
+score p (Advantage o)
+  | p == o = Game p
+  | otherwise = Advantage p

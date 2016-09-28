@@ -28,6 +28,8 @@ scTests =
     \player p2 -> Forty `notElem` [p2] ==> score player (pointsFor player Forty p2) == Game player
   , testProperty "Player who wins at deuce gains advantage" $
     \player -> score player (Score Forty Forty) == Advantage player
+  , testProperty "If advantaged player wins -> Game for that player" $
+    \player -> score player (Advantage player) == Game player
   ]
 
 huTests :: [TestTree]

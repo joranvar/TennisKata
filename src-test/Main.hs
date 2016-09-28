@@ -7,7 +7,7 @@ import Test.Tasty.HUnit
 import Test.Tasty.SmallCheck
 import Test.SmallCheck.Series
 
-import Lib ()
+import Lib
 instance (Monad m, Enum a, Bounded a) => Serial m a where
   series = generate (\d -> take d [minBound .. maxBound])
 
@@ -22,8 +22,8 @@ tests =
 
 scTests :: [TestTree]
 scTests =
-  [ testProperty "id x == x" $
-    \x -> id (x::Int) == x
+  [ testProperty "Score advances unless it is Forty" $
+    \player p1 p2 -> Forty `notElem` [p1,p2] ==> score player (pointsFor player p1 p2) == (pointsFor player (succ p1) p2)
   ]
 
 huTests :: [TestTree]

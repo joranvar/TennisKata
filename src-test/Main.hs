@@ -24,6 +24,8 @@ scTests :: [TestTree]
 scTests =
   [ testProperty "Score advances unless it is Forty" $
     \player p1 p2 -> Forty `notElem` [p1,p2] ==> score player (pointsFor player p1 p2) == (pointsFor player (succ p1) p2)
+  , testProperty "Player with Forty scores, then wins" $
+    \player p2 -> Forty `notElem` [p2] ==> score player (pointsFor player Forty p2) == Game player
   ]
 
 huTests :: [TestTree]

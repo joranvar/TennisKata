@@ -14,7 +14,7 @@ data Player = Player1 | Player2
 
 -- | can have either of these points in one game 0 15 30 40
 data Points = Love | Fifteen | Thirty | Forty
-  deriving (Enum, Bounded, Eq)
+  deriving (Enum, Bounded, Eq, Show)
 
 -- | (in one game)
 data Game = Points Points Points

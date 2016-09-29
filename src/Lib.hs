@@ -31,7 +31,7 @@ data Game = Points Points Points
 score :: Player -> Game -> Game
 score p (Points Forty Forty) = Advantage p
 score Player1 (Points Forty _) = Winner Player1
-score Player2 (Points Forty _) = Winner Player2
+score Player2 (Points _ Forty) = Winner Player2
 score p (Advantage o) | p == o = Winner p
                       | otherwise = Points Forty Forty
 score Player1 (Points p1 p2) = Points (succ p1) p2

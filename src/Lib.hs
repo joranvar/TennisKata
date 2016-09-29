@@ -10,16 +10,17 @@ module Lib
 
 -- | 1. Each player
 data Player = Player1 | Player2
-  deriving Eq
+  deriving (Eq, Bounded, Enum, Show)
 
 -- | can have either of these points in one game 0 15 30 40
 data Points = Love | Fifteen | Thirty | Forty
-  deriving (Enum, Bounded)
+  deriving (Enum, Bounded, Eq)
 
 -- | (in one game)
 data Game = Points Points Points
           | Winner Player
           | Advantage Player
+  deriving (Eq)
 
 -- | 2. If you have 40 and you win the ball you win the game,
 -- | however there are special rules.

@@ -24,6 +24,14 @@ scTests :: [TestTree]
 scTests =
   [ testProperty "Score never returns to Love-all" $
     \p ps -> foldl (flip score) (Points Love Love) (p:ps) /= (Points Love Love)
+  , testProperty "The game gets a bit boring after six balls" $
+    \p0 p1 p2 p3 p4 p5 ps ->
+      foldl (flip score) (Points Love Love) (p0:p1:p2:p3:p4:p5:ps) `elem`
+      [ Points Forty Forty
+      , Advantage Player1
+      , Winner Player1
+      , Advantage Player2
+      , Winner Player2 ]
   ]
 
 huTests :: [TestTree]

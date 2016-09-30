@@ -37,4 +37,6 @@ score g winner | isDeuce g = Advantage winner
 -- | If you have Forty and win the ball, you win the game
 score (Points Forty _) Player1 = Winner Player1
 score (Points _ Forty) Player2 = Winner Player2
+-- | If the player with advantage wins the ball he wins the game
+score (Advantage p) winner | winner == p = Winner winner
 score _ _ = undefined

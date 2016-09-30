@@ -29,7 +29,11 @@ data Game = Points Point Point
 
 -- | If both have 40 the players are deuce
 isDeuce :: Game -> Bool
-isDeuce = (== Points Forty Forty)
+isDeuce = (== deuce)
+
+-- | The deuce known state
+deuce :: Game
+deuce = Points Forty Forty
 
 score :: Game -> Player -> Game
 -- | If the game is in deuce, the winner of a ball will have advantage
@@ -38,5 +42,7 @@ score g winner | isDeuce g = Advantage winner
 score (Points Forty _) Player1 = Winner Player1
 score (Points _ Forty) Player2 = Winner Player2
 -- | If the player with advantage wins the ball he wins the game
+-- | If the player without advantage wins they are back at deuce
 score (Advantage p) winner | winner == p = Winner winner
+                           | otherwise = deuce
 score _ _ = undefined

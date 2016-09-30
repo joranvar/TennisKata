@@ -6,6 +6,9 @@ module Lib
   , Point(..)
   , Game(..)
 
+    -- * Main functions
+  , score
+
     -- * Predicates
   , isDeuce
   ) where
@@ -26,3 +29,9 @@ data Game = Points Point Point
 -- | If both have 40 the players are deuce
 isDeuce :: Game -> Bool
 isDeuce = (== Points Forty Forty)
+
+-- | If you have Forty and win the ball, you win the game
+score :: Game -> Player -> Game
+score (Points Forty _) Player1 = Winner Player1
+score (Points _ Forty) Player2 = Winner Player2
+score _ _ = undefined

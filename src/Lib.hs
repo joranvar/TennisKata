@@ -5,6 +5,9 @@ module Lib
     Player(..)
   , Point(..)
   , Game(..)
+
+    -- * Predicates
+  , isDeuce
   ) where
 
 -- | Each player
@@ -20,3 +23,6 @@ data Game = Points Point Point
           | Winner Player
   deriving (Eq, Show)
 
+-- | If both have 40 the players are deuce
+isDeuce :: Game -> Bool
+isDeuce = (== Points Forty Forty)

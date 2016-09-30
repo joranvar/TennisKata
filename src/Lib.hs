@@ -24,14 +24,17 @@ data Point = Love | Fifteen | Thirty | Forty
 -- | in one game
 data Game = Points Point Point
           | Winner Player
+          | Advantage Player
   deriving (Eq, Show)
 
 -- | If both have 40 the players are deuce
 isDeuce :: Game -> Bool
 isDeuce = (== Points Forty Forty)
 
--- | If you have Forty and win the ball, you win the game
 score :: Game -> Player -> Game
+-- | If the game is in deuce, the winner of a ball will have advantage
+score g winner | isDeuce g = Advantage winner
+-- | If you have Forty and win the ball, you win the game
 score (Points Forty _) Player1 = Winner Player1
 score (Points _ Forty) Player2 = Winner Player2
 score _ _ = undefined

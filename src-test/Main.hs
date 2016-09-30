@@ -1,5 +1,6 @@
 {-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE MultiParamTypeClasses #-}
+{-# LANGUAGE ScopedTypeVariables #-}
 {-# OPTIONS_GHC -fno-warn-orphans #-}
 
 import Test.Tasty
@@ -7,7 +8,7 @@ import Test.Tasty.HUnit
 import Test.Tasty.SmallCheck
 import Test.SmallCheck.Series
 
-import Lib ()
+import Lib
 instance (Monad m, Enum a, Bounded a) => Serial m a where
   series = generate (\d -> take d [minBound .. maxBound])
 
@@ -22,8 +23,10 @@ tests =
 
 scTests :: [TestTree]
 scTests =
-  [ testProperty "id x == x" $
-    \x -> id (x::Int) == x
+  [ testProperty "No more Love-all after any ball" $
+    \(balls::[Player]) ->
+      length balls > 0
+      ==> foldl score (Points Love Love) balls /= Points Love Love
   ]
 
 huTests :: [TestTree]

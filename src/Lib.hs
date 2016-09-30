@@ -17,4 +17,6 @@ data Point = Love | Fifteen | Thirty | Forty
 
 -- | in one game
 data Game = Points Point Point
+          | Winner Player
   deriving (Eq, Show)
+

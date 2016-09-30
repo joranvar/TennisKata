@@ -45,4 +45,8 @@ score (Points _ Forty) Player2 = Winner Player2
 -- | If the player without advantage wins they are back at deuce
 score (Advantage p) winner | winner == p = Winner winner
                            | otherwise = deuce
+-- | Non-written rule: score advances points for winner
+score (Points p1 p2) Player1 = Points (succ p1) p2
+score (Points p1 p2) Player2 = Points p1 (succ p2)
+
 score _ _ = undefined
